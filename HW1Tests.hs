@@ -10,7 +10,12 @@ import Data.List (sort)
 import HW1
 
 -- P1. merge_sorted tests
-
+p1_mytest1 = TestCase (assertEqual"merge_sorted-mytest1"
+                                  [1,1,1,1,2,4]
+                                  (merge_sorted [1,1,1,4] [1,2]) )
+p1_mytest2 = TestCase (assertEqual"merge_sorted-mytest2"
+                                  "abcxyz"
+                                  (merge_sorted "abcz" "xy") )
  
 -- P2. sum_range tests
 
@@ -25,7 +30,8 @@ import HW1
 
 
 -- add the test cases you created to the below list. 
-tests = TestList [ 
+tests = TestList [ TestLabel "Problem 1 - Test 1" p1_mytest1,
+                   TestLabel "Problem 1 - Test 2" p1_mytest2
                  ] 
                   
 -- shortcut to run the tests
