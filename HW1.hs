@@ -34,10 +34,20 @@ longest_collatz_seq n = (collatz_comp n (n - 1))
           collatz_comp n x | (length (calc_collatz_seq x)) > (length (calc_collatz_seq n)) = collatz_comp x (x-1)
 
 -- P4  (a) game_scores ; 15%
-
+game_scores :: Eq t => [(a1, [(t, a2)])] -> t -> [a2]
+game_scores [] name = []
+game_scores ((x,[]):xs) name = game_scores xs name
+game_scores ((x,(str, (w)):ws):xs) name | name == str = w : (game_scores ((x,ws):xs) name)
+                                        | otherwise = game_scores ((x,ws):xs) name
 
 -- P4  (b) wins_by_year ; 10%
-
+wins_by_year :: (Num b, Ord a1) => [(a2, [(a3, (a1, a1))])] -> [(a2, b)]
+wins_by_year [] = []
+wins_by_year ((x, (w:ws):xs) = (x, (count_wins (w:ws) 0)) : (wins_by_year xs) 
+     where
+          count_wins [] n = n
+          count_wins ((w, o):ws) n | w > o = (count_wins ws (n + 1))
+                                   | otherwise = count_wins ws n
 
 -- P5  compress_str ; 15% 
 
