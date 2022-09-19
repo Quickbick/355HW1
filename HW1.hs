@@ -26,7 +26,12 @@ calc_collatz_seq n | (n `mod` 2) == 0 = n : (calc_collatz_seq (n `div` 2))
                    | otherwise = n : (calc_collatz_seq ((3*n) + 1))
 
 -- P3  (b) longest_collatz_seq ; 15%
-
+longest_collatz_seq :: Integral a => a -> [a]
+longest_collatz_seq n = (collatz_comp n (n - 1))
+     where
+          collatz_comp n 0 = calc_collatz_seq n
+          collatz_comp n x | (length (calc_collatz_seq n)) >= (length (calc_collatz_seq x)) = collatz_comp n (x-1)
+          collatz_comp n x | (length (calc_collatz_seq x)) > (length (calc_collatz_seq n)) = collatz_comp x (x-1)
 
 -- P4  (a) game_scores ; 15%
 
