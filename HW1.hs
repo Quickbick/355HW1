@@ -20,7 +20,10 @@ sum_range (0 , n) (x:xs) = x + (sum_range (0, n - 1) xs)
 sum_range (b, n) (x:xs) = sum_range (b - 1, n - 1) xs
 
 -- P3  (a) calc_collatz_seq ; 10%
-
+calc_collatz_seq :: Integral a => a -> [a]
+calc_collatz_seq 1 = [1]
+calc_collatz_seq n | (n `mod` 2) == 0 = n : (calc_collatz_seq (n `div` 2))
+                   | otherwise = n : (calc_collatz_seq ((3*n) + 1))
 
 -- P3  (b) longest_collatz_seq ; 15%
 
