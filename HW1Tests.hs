@@ -10,15 +10,20 @@ import Data.List (sort)
 import HW1
 
 -- P1. merge_sorted tests
-p1_mytest1 = TestCase (assertEqual"merge_sorted-mytest1"
+p1_test1 = TestCase (assertEqual"merge_sorted-test1"
                                   [1,1,1,1,2,4]
                                   (merge_sorted [1,1,1,4] [1,2]) )
-p1_mytest2 = TestCase (assertEqual"merge_sorted-mytest2"
+p1_test2 = TestCase (assertEqual"merge_sorted-test2"
                                   "abcxyz"
                                   (merge_sorted "abcz" "xy") )
  
 -- P2. sum_range tests
-
+p2_test1 = TestCase (assertEqual "sum_range-test1"
+                                 0
+                                 (sum_range (0,0) [0, 1, 2]) )
+p2_test2 = TestCase (assertEqual "sum_range-test2"
+                                 19
+                                 (sum_range (9,10) [0,1,2,3,4,5,6,7,8,9, 10]) )
 
 -- P3. (a) calc_collatz_seq and (b) longest_collatz_seq tests                                  
 
@@ -30,8 +35,10 @@ p1_mytest2 = TestCase (assertEqual"merge_sorted-mytest2"
 
 
 -- add the test cases you created to the below list. 
-tests = TestList [ TestLabel "Problem 1 - Test 1" p1_mytest1,
-                   TestLabel "Problem 1 - Test 2" p1_mytest2
+tests = TestList [ TestLabel "Problem 1 - Test 1" p1_test1,
+                   TestLabel "Problem 1 - Test 2" p1_test2,
+                   TestLabel "Problem 2 - Test 1" p2_test1,
+                   TestLabel "Problem 2 - Test 2" p2_test2
                  ] 
                   
 -- shortcut to run the tests

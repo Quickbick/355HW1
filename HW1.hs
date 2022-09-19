@@ -14,7 +14,10 @@ merge_sorted (x:xs) (d:ds) | x > d = d : (merge_sorted (x:xs) ds)
                            | x == d = x : d : (merge_sorted xs ds)
 
 -- P2  sum_range  15%
-
+sum_range :: (Ord a, Num p, Num a) => (a, a) -> [p] -> p 
+sum_range (0, 0) (x:xs) = x
+sum_range (0 , n) (x:xs) = x + (sum_range (0, n - 1) xs)
+sum_range (b, n) (x:xs) = sum_range (b - 1, n - 1) xs
 
 -- P3  (a) calc_collatz_seq ; 10%
 
