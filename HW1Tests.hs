@@ -16,7 +16,7 @@ wsu_games = [
     (2020, [("ORST",(38,28)), ("ORE",(29,43)), ("USC",(13,38)), ("UTAH",(28,45))]),
     (2021, [("USU",(23,26)), ("PORT ST.",(44,24)), ("USC",(14,45)), ("UTAH",(13,24)), ("CAL",(21,6)),
             ("ORST",(31,24)), ("STAN",(34,31)), ("BYU",(19,21)), ("ASU",(34,21)), ("ORE",(24,38)), 
-            ("ARIZ",(44,18)), ("WASH",(40,13)), ("CMU",(21,24))] )
+            ("ARIZ",(44,18)), ("WASH",(40,13)), ("CMU",(21,24)), ("YALE", (34,21))] )
             ]
 
 -- P1. merge_sorted tests
@@ -55,7 +55,10 @@ p4_test1 = TestCase (assertEqual "game_scores-test1"
                                  (sort $ game_scores wsu_games "NMSU") )
 p4_test2 = TestCase (assertEqual "game_scores-test2"
                                   (sort [(13,31),(40,13)])  
-                                  (sort $ game_scores wsu_games "WASH") )                                                
+                                  (sort $ game_scores wsu_games "WASH") )
+p4_test3 = TestCase (assertEqual "wins_by_year-test1"
+                                 (sort [(2019,6),(2020,1),(2021,8)])  
+                                 (sort $ wins_by_year wsu_games) )                                                
 -- P5. compress_str tests
 
 
@@ -69,7 +72,8 @@ tests = TestList [ TestLabel "Problem 1 - Test 1" p1_test1,
                    TestLabel "Problem 3b - Test 1" p3_test3,
                    TestLabel "Problem 3b - Test 2" p3_test4,
                    TestLabel "Problem 4a - Test 1" p4_test1,
-                   TestLabel "Problem 4a - Test 2" p4_test2
+                   TestLabel "Problem 4a - Test 2" p4_test2,
+                   TestLabel "Problem 4b - Test 1" p4_test1
                  ] 
                   
 -- shortcut to run the tests
