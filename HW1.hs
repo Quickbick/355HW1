@@ -50,8 +50,39 @@ wins_by_year ((x,((str, (w, o)):ws)):xs) = (x, (count_wins ((str, (w, o)):ws) 0)
                                           | otherwise = count_wins ws n
 
 -- P5  compress_str ; 15% 
-
-
+compress_str :: [Char] -> [Char]
+compress_str [] = []
+compress_str (x:xs) = compress_str_helper (x:xs) 1
+     where
+          compress_str_helper :: [Char] -> Int -> [Char]
+          compress_str_helper [] n = []
+          compress_str_helper [x] n | n == 1 = [x]
+                                    | otherwise = x:(digit_to_char n)
+                                        where
+                                             digit_to_char x | x == 0 = ['0'] --didn't want to do this but it was 11pm and I ran out of ideas
+                                                             | x == 1 = ['1']
+                                                             | x == 2 = ['2']
+                                                             | x == 3 = ['3']
+                                                             | x == 4 = ['4']
+                                                             | x == 5 = ['5']
+                                                             | x == 6 = ['6']
+                                                             | x == 7 = ['7']
+                                                             | x == 8 = ['8']
+                                                             | x == 9 = ['9']
+          compress_str_helper (x:y:xs) n | x == y = compress_str_helper (x:xs) (n + 1)
+                                         | (x /= y) && (n == 1) = x:(compress_str_helper (y:xs) n)
+                                         | otherwise = x:(digit_to_char n):(compress_str_helper (y:xs) 1)
+                                             where
+                                                  digit_to_char x | x == 0 = '0'
+                                                                  | x == 1 = '1'
+                                                                  | x == 2 = '2'
+                                                                  | x == 3 = '3'
+                                                                  | x == 4 = '4'
+                                                                  | x == 5 = '5'
+                                                                  | x == 6 = '6'
+                                                                  | x == 7 = '7'
+                                                                  | x == 8 = '8'
+                                                                  | x == 9 = '9'
 
 -- Assignment rules ; 4%
 -- Your own tests ; 6%

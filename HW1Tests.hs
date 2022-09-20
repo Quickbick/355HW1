@@ -60,7 +60,12 @@ p4_test3 = TestCase (assertEqual "wins_by_year-test1"
                                  (sort [(2019,6),(2020,1),(2021,8)])  
                                  (sort $ wins_by_year wsu_games) )                                                
 -- P5. compress_str tests
-
+p5_test1 = TestCase (assertEqual "compress_str-test1"
+                                 ""
+                                 (compress_str "") )
+p5_test2 = TestCase (assertEqual "compress_str-test2"
+                                 "a5"
+                                 (compress_str "aaaaa") )
 
 -- add the test cases you created to the below list. 
 tests = TestList [ TestLabel "Problem 1 - Test 1" p1_test1,
@@ -73,7 +78,9 @@ tests = TestList [ TestLabel "Problem 1 - Test 1" p1_test1,
                    TestLabel "Problem 3b - Test 2" p3_test4,
                    TestLabel "Problem 4a - Test 1" p4_test1,
                    TestLabel "Problem 4a - Test 2" p4_test2,
-                   TestLabel "Problem 4b - Test 1" p4_test1
+                   TestLabel "Problem 4b - Test 1" p4_test1,
+                   TestLabel "Problem 5 - Test 1" p5_test1,
+                   TestLabel "Problem 5 - Test 2" p5_test2
                  ] 
                   
 -- shortcut to run the tests
